@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliz Ok | Kişisel Web Sitesi</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #f8fafc;
+      background: #090e1c;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      top: -200px;
+      right: -130px;
+      background: #7353e8;
+      filter: blur(180px);
+      opacity: .3;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 8%;
+      border-bottom: 1px solid #ffffff16;
+    }
+
+    .logo { font-size: 22px; font-weight: 800; }
+    .logo span { color: #a78bfa; }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 105px 20px 70px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #c4b5fd;
+      background: #a78bfa17;
+      border: 1px solid #a78bfa45;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 25px 0 15px;
+      font-size: clamp(45px, 8vw, 80px);
+      letter-spacing: -3px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #94a3b8;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 27px;
+      background: linear-gradient(90deg, #7c3aed, #2563eb);
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .2s;
+    }
+
+    .button:hover { transform: translateY(-4px); }
+
+    section {
+      max-width: 1050px;
+      margin: 35px auto 70px;
+      padding: 0 25px;
+    }
+
+    h2 { font-size: 29px; margin-bottom: 25px; }
+
+    .card {
+      background: #ffffff08;
+      border: 1px solid #ffffff18;
+      border-radius: 20px;
+      padding: 30px;
+      line-height: 1.9;
+      color: #cbd5e1;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .interest {
+      background: #ffffff08;
+      border: 1px solid #ffffff18;
+      padding: 28px;
+      border-radius: 18px;
+      transition: .25s;
+    }
+
+    .interest:hover {
+      transform: translateY(-6px);
+      border-color: #a78bfa;
+    }
+
+    .interest .emoji { font-size: 32px; }
+    .interest h3 { margin: 15px 0 8px; }
+    .interest p { color: #94a3b8; font-size: 14px; }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 1px solid #ffffff18;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px; }
+      nav a { margin-left: 10px; }
+      .hero { padding-top: 75px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Eliz<span>.</span></div>
+    <div>
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#alanlar">İlgi Alanlarım</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="tag">✦ Kişisel Portfolyo • 2026</div>
+      <h1>Merhaba, ben <span>Eliz.</span></h1>
+      <p>
+        Bilgisayar Mühendisliği Öğrencisi
+        <br>
+        Teknolojiyi, yazılımı ve yeni şeyler öğrenmeyi seviyorum.
+      </p>
+      <a class="button" href="#hakkimda">Beni Tanı ↓</a>
+    </div>
+
+    <section id="hakkimda">
+      <h2>✦ Hakkımda</h2>
+      <div class="card">
+        <p>
+          Merhaba! Ben Eliz Ok. Bilgisayar mühendisliği
+          öğrencisiyim. Yazılım geliştirme, web teknolojileri,
+          bilgisayar ağları ve veritabanı sistemleri üzerine
+          kendimi geliştirmeye çalışıyorum.
+        </p>
+        <p>
+          Bu web sitesi, Bilgisayar Ağları dersi kapsamında
+          DNS ve web hosting teknolojilerini uygulamalı
+          olarak öğrenmek amacıyla hazırlanmıştır.
+        </p>
+      </div>
+    </section>
+
+    <section id="alanlar">
+      <h2>✦ İlgi Alanlarım</h2>
+      <div class="cards">
+        <div class="interest">
+          <div class="emoji">💻</div>
+          <h3>Yazılım</h3>
+          <p>Algoritmalar ve programlama dilleri.</p>
+        </div>
+        <div class="interest">
+          <div class="emoji">🌐</div>
+          <h3>Bilgisayar Ağları</h3>
+          <p>DNS, internet protokolleri ve ağ yapıları.</p>
+        </div>
+        <div class="interest">
+          <div class="emoji">🗄️</div>
+          <h3>Veritabanı</h3>
+          <p>SQL ve veri yönetimi sistemleri.</p>
+        </div>
+        <div class="interest">
+          <div class="emoji">🎨</div>
+          <h3>Web Tasarımı</h3>
+          <p>HTML, CSS ve modern web teknolojileri.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Eliz Ok • Bilgisayar Ağları Dersi Projesi
+  </footer>
+
+</body>
+</html>
