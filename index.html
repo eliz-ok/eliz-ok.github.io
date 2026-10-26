@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliz Ok | Kişisel Web Sitesi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #12061f, #2a0d3f, #3d114f, #1d1039);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Arka plan parıltıları */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    body::before {
+      top: -120px;
+      left: -100px;
+      background: #ff8fd8;
+    }
+
+    body::after {
+      bottom: -140px;
+      right: -100px;
+      background: #c18bff;
+    }
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .sparkles span {
+      position: absolute;
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      animation: floatStar 6s infinite ease-in-out;
+    }
+
+    .sparkles span:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
+    .sparkles span:nth-child(2) { top: 20%; left: 78%; animation-delay: 1s; }
+    .sparkles span:nth-child(3) { top: 35%; left: 18%; animation-delay: 2s; }
+    .sparkles span:nth-child(4) { top: 48%; left: 85%; animation-delay: 3s; }
+    .sparkles span:nth-child(5) { top: 70%; left: 10%; animation-delay: 1.5s; }
+    .sparkles span:nth-child(6) { top: 82%; left: 72%; animation-delay: 2.5s; }
+    .sparkles span:nth-child(7) { top: 60%; left: 50%; animation-delay: 4s; }
+    .sparkles span:nth-child(8) { top: 15%; left: 48%; animation-delay: 2.8s; }
+
+    @keyframes floatStar {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.5; }
+      50% { transform: translateY(-10px) scale(1.15); opacity: 1; }
+    }
+
+    nav, main, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 8%;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #ff9fe5;
+      text-shadow: 0 0 10px rgba(255,159,229,0.8);
+    }
+
+    nav a {
+      color: #f9d8f2;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 15px;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 12px rgba(255,182,232,0.9);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 110px 20px 70px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: rgba(255, 182, 232, 0.12);
+      border: 1px solid rgba(255, 210, 240, 0.35);
+      color: #ffd8f2;
+      font-size: 14px;
+      box-shadow: 0 0 20px rgba(255, 153, 221, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 28px 0 18px;
+      font-size: clamp(44px, 8vw, 88px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #ffb3ec, #ff8cd9, #caa0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 18px rgba(255, 170, 230, 0.25);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #f4d8f5;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 15px 30px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff84cf, #c88dff);
+      box-shadow: 0 8px 28px rgba(255, 123, 211, 0.35);
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(255, 123, 211, 0.45);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 35px auto 70px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 24px;
+      color: #fff0fb;
+      text-shadow: 0 0 10px rgba(255, 180, 235, 0.2);
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 24px;
+      padding: 32px;
+      color: #f7ddf4;
+      line-height: 1.9;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .interest {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 22px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      transition: 0.25s;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .interest:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255, 191, 233, 0.7);
+      box-shadow: 0 14px 30px rgba(255, 141, 219, 0.18);
+    }
+
+    .interest .emoji {
+      font-size: 34px;
+    }
+
+    .interest h3 {
+      margin: 14px 0 8px;
+      color: #fff3fb;
+      font-size: 22px;
+    }
+
+    .interest p {
+      color: #f1d2ea;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px 45px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: #f4caea;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 22px 20px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero {
+        padding: 85px 20px 55px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sparkles">
+    <span>✦</span>
+    <span>✦</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+  </div>
+
+  <nav>
+    <div class="logo">Eliz<span>.</span></div>
+    <div>
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#alanlar">İlgi Alanlarım</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="tag">✨ Kişisel Portfolyo • 2026 • Fairy Theme</div>
+      <h1>Merhaba, ben <span>Eliz.</span></h1>
+      <p>
+        Bilgisayar Mühendisliği Öğrencisi
+        <br>
+        Teknolojiyi, yazılımı ve yeni şeyler öğrenmeyi seviyorum.
+      </p>
+      <a class="button" href="#hakkimda">Beni Tanı ↓</a>
+    </div>
+
+    <section id="hakkimda">
+      <h2>🧚‍♀️ Hakkımda</h2>
+      <div class="card">
+        <p>
+          Merhaba! Ben Eliz Ok. Bilgisayar mühendisliği öğrencisiyim.
+          Yazılım geliştirme, web teknolojileri, bilgisayar ağları ve
+          veritabanı sistemleri üzerine kendimi geliştirmeye çalışıyorum.
+        </p>
+        <p style="margin-top: 14px;">
+          Bu web sitesi, Bilgisayar Ağları dersi kapsamında DNS ve web hosting
+          teknolojilerini uygulamalı olarak öğrenmek amacıyla hazırlanmıştır.
+        </p>
+      </div>
+    </section>
+
+    <section id="alanlar">
+      <h2>✨ İlgi Alanlarım</h2>
+      <div class="cards">
+        <div class="interest">
+          <div class="emoji">💻</div>
+          <h3>Yazılım</h3>
+          <p>Algoritmalar, programlama dilleri ve yeni teknolojiler ilgimi çekiyor.</p>
+        </div>
+
+        <div class="interest">
+          <div class="emoji">🌐</div>
+          <h3>Bilgisayar Ağları</h3>
+          <p>DNS, internet yapısı ve ağ protokollerini öğrenmeyi seviyorum.</p>
+        </div>
+
+        <div class="interest">
+          <div class="emoji">🗄️</div>
+          <h3>Veritabanı</h3>
+          <p>SQL, veri düzenleme ve verilerin güvenli şekilde saklanmasıyla ilgileniyorum.</p>
+        </div>
+
+        <div class="interest">
+          <div class="emoji">🎀</div>
+          <h3>Web Tasarımı</h3>
+          <p>HTML, CSS ve estetik görünen modern arayüzler oluşturmayı seviyorum.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Eliz Ok • Bilgisayar Ağları Dersi Projesi ✨
+  </footer>
+
+</body>
+</html>
