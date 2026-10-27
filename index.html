@@ -270,6 +270,42 @@
         font-size: 28px;
       }
     }
+
+    /* DNS bölümü: mevcut peri temasına eklenmiştir. */
+    #dns .dns-intro { max-width: 760px; color: #f4d8f5; line-height: 1.85; margin-bottom: 26px; }
+    #dns .dns-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
+    #dns .dns-fact { min-width: 0; padding: 23px; border-radius: 20px; border: 1px solid rgba(255, 210, 240, .23); background: linear-gradient(135deg, rgba(255, 159, 229, .12), rgba(202, 160, 255, .09)); }
+    #dns .dns-fact dt { color: #e9c4e7; font-size: 14px; margin-bottom: 10px; }
+    #dns .dns-fact dd { margin: 0; color: #fff3fb; font-size: 18px; font-weight: 700; overflow-wrap: anywhere; line-height: 1.6; }
+    #dns a { color: #ffd0f0; text-underline-offset: 4px; }
+    #dns .dns-providers { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    #dns .dns-provider { border: 1px solid rgba(255, 210, 240, .2); border-radius: 999px; padding: 8px 15px; color: #f9dcf3; background: rgba(255,255,255,.05); font-size: 13px; }
+    #dns .dns-table-wrap { border: 1px solid rgba(255, 210, 240, .23); border-radius: 22px; overflow: hidden; background: rgba(255,255,255,.055); box-shadow: 0 12px 35px rgba(0,0,0,.12); }
+    #dns table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: left; }
+    #dns caption { text-align: left; padding: 22px 24px; color: #fff0fb; font-size: 19px; font-weight: 700; }
+    #dns th { background: rgba(202,160,255,.09); color: #ebc6ea; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; }
+    #dns th, #dns td { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.12); vertical-align: top; line-height: 1.7; overflow-wrap: anywhere; }
+    #dns th:first-child { width: 112px; }
+    #dns th:nth-child(2) { width: 46%; }
+    #dns td { color: #f0d5ec; font-size: 14px; }
+    #dns .dns-badge { display: inline-block; padding: 5px 11px; border: 1px solid rgba(255,159,229,.45); border-radius: 10px; color: #ffb9e9; background: rgba(255,159,229,.1); font-weight: 800; font-size: 13px; }
+    #dns .dns-host { display: block; margin-bottom: 8px; color: #e4bfe5; font-size: 12px; }
+    #dns code { font-family: Consolas, 'Courier New', monospace; color: #fff0fb; font-size: 14px; }
+    #dns .dns-values { display: grid; gap: 5px; }
+    #dns .dns-priority { font-family: 'Segoe UI', Arial, sans-serif; color: #e5bbdf; font-size: 12px; }
+    #dns .dns-note { color: #e9c4e7; line-height: 1.85; margin-top: 18px; font-size: 14px; }
+    @media (max-width: 760px) {
+      #dns .dns-facts { grid-template-columns: 1fr; }
+      #dns th, #dns td { padding: 15px 13px; }
+      #dns th:first-child { width: 84px; }
+      #dns th:nth-child(2) { width: auto; }
+      #dns th:last-child, #dns td:last-child { display: none; }
+      #dns code { font-size: 12px; }
+      #dns .dns-note { font-size: 13px; }
+    }
+
+    #dns .dns-mobile-desc { display: none; }
+    @media (max-width: 760px) { #dns .dns-mobile-desc { display: block; color: #e9c4e7; font-size: 12px; margin-top: 12px; } }
   </style>
 </head>
 <body>
@@ -290,6 +326,7 @@
     <div>
       <a href="#hakkimda">Hakkımda</a>
       <a href="#alanlar">İlgi Alanlarım</a>
+      <a href="#dns">DNS Bilgilerim</a>
     </div>
   </nav>
 
@@ -347,6 +384,30 @@
           <p>HTML, CSS ve estetik görünen modern arayüzler oluşturmayı seviyorum.</p>
         </div>
       </div>
+    </section>
+
+    <section id="dns" aria-labelledby="dns-heading">
+      <h2 id="dns-heading">🌐 Alan Adı &amp; DNS Bilgilerim</h2>
+      <p class="dns-intro">Bu kişisel web sitesi, Bilgisayar Ağları dersi kapsamında Eliz Ok tarafından hazırlanmıştır. Sayfa dosyaları GitHub Pages üzerinde barındırılır; ücretsiz alt alan adı ve DNS yönetimi ClouDNS üzerinden sağlanır.</p>
+      <dl class="dns-facts">
+        <div class="dns-fact"><dt>Web sitesi adresi</dt><dd><a href="https://www.elizok.abrdns.com/">www.elizok.abrdns.com</a></dd></div>
+        <div class="dns-fact"><dt>A kaydındaki IPv4 adresi</dt><dd><code>185.199.108.153</code></dd></div>
+        <div class="dns-fact"><dt>Alan adı oluşturulma tarihi</dt><dd><time datetime="2026-10-26">26 Ekim 2026</time></dd></div>
+      </dl>
+      <div class="dns-providers"><span class="dns-provider">✦ Hosting: GitHub Pages</span><span class="dns-provider">✦ DNS: ClouDNS</span><span class="dns-provider">✦ Bağlantı: HTTPS</span></div>
+      <div class="dns-table-wrap">
+        <table>
+          <caption>DNS kayıtlarım</caption>
+          <thead><tr><th scope="col">Tür</th><th scope="col">Alan adı / Sunucu adresi</th><th scope="col">Açıklama</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dns-badge">NS</span></td><td><span class="dns-host">elizok.abrdns.com</span><div class="dns-values"><code>ns71.cloudns.net</code><code>ns72.cloudns.com</code><code>ns73.cloudns.net</code><code>ns74.cloudns.uk</code></div><span class="dns-mobile-desc">Alan adının DNS kayıtlarını yöneten ClouDNS ad sunucuları. ClouDNS tarafından otomatik oluşturuldu.</span></td><td>Alan adının DNS kayıtlarını yöneten ClouDNS ad sunucuları. ClouDNS tarafından otomatik oluşturuldu.</td></tr>
+            <tr><td><span class="dns-badge">A</span></td><td><span class="dns-host">elizok.abrdns.com</span><code>185.199.108.153</code><span class="dns-mobile-desc">Ana alan adını GitHub Pages web sunucusunun IPv4 adresine bağlar. IP adresi GitHub Pages dokümanından alınmıştır.</span></td><td>Ana alan adını GitHub Pages web sunucusunun IPv4 adresine bağlar. IP adresi GitHub Pages dokümanından alınmıştır.</td></tr>
+            <tr><td><span class="dns-badge">CNAME</span></td><td><span class="dns-host">www.elizok.abrdns.com</span><code>eliz-ok.github.io</code><span class="dns-mobile-desc">www adresini kişisel GitHub Pages adresime takma ad olarak bağlar.</span></td><td>www adresini kişisel GitHub Pages adresime takma ad olarak bağlar.</td></tr>
+            <tr><td><span class="dns-badge">MX</span></td><td><span class="dns-host">elizok.abrdns.com</span><div class="dns-values"><div><code>mailforward71.cloudns.net</code><br><span class="dns-priority">Öncelik: 10</span></div><div><code>mailforward72.cloudns.net</code><br><span class="dns-priority">Öncelik: 20</span></div></div><span class="dns-mobile-desc">Alan adıma gelen e-postaları ClouDNS mail yönlendirme sunucularına iletir. Küçük öncelik değeri önce tercih edilir.</span></td><td>Alan adıma gelen e-postaları ClouDNS mail yönlendirme sunucularına iletir. Küçük öncelik değeri önce tercih edilir.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dns-note">✧ DNS kayıtlarının TTL değeri 1 saattir. <strong>info@elizok.abrdns.com</strong> adresi için kişisel e-posta hesabıma yönlendirme tanımlanmıştır. HTTPS bağlantısı GitHub Pages üzerinden etkinleştirilmiştir.</p>
     </section>
   </main>
 
